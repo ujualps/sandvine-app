@@ -1,0 +1,27 @@
+@import "../../constants.scss";
+
+.icon-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: none;
+  border: none;
+  color: $primary-color;
+  height: 32px;
+  width: 32px;
+  transition: 0.2s;
+  border-radius: 6px;
+  &:hover {
+    background-color: #ddf2ef;
+  }
+
+  &[data-isActive="true"] {
+    background-color: $primary-color;
+    color: white;
+  }
+}
+
+// .icon-wrapper[data-isActive="true"] {
+//   background-color: $primary-color;
+//   color: white;
+// }
