@@ -1,0 +1,48 @@
+@import "../../../../constants.scss";
+
+@keyframes title-keyframe {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.list-item {
+  margin-top: 1rem;
+  width: 100%;
+  font-size: 14px;
+  &[data-iscollapsed="false"] {
+    .title {
+      opacity: 1;
+      transition-delay: 0.3s;
+      animation-delay: 0.3s;
+      animation-name: title-keyframe;
+      animation-duration: 0.3s;
+      width: auto;
+      margin-left: 0.5rem;
+    }
+  }
+  &[data-iscollapsed="true"] {
+    .title {
+      opacity: 0;
+      width: 0;
+    }
+  }
+  a {
+    display: flex;
+    // padding-block: .5rem;
+    align-items: center;
+    width: 100%;
+    justify-items: flex-start;
+    text-decoration: none;
+    color: $primary-color;
+    border-radius: 6px;
+    transition: 0.2s;
+    // background-color: aliceblue;
+    &:hover {
+      background-color: #ddf2ef;
+    }
+  }
+}

@@ -11,8 +11,9 @@ import {
   IconDefinition,
   IconName,
 } from "@fortawesome/fontawesome-common-types";
-import { sideNavIcons } from "./utils";
+import { sideNavIcons, navigation } from "./utils";
 import { APP_NAME } from "interface/translate.const";
+import { ListItem } from "./Components/ListItem";
 
 //https://dribbble.com/shots/16252715-Sidebar-navigation
 const SideNav = () => {
@@ -29,16 +30,17 @@ const SideNav = () => {
           icon={isCollapsed ? sideNavIcons.arrowRight : sideNavIcons.arrowLeft}
           onClick={toggleCollapsed}
         />
-        { <span className="title">{APP_NAME}</span>}
+        {<span className="title">{APP_NAME}</span>}
       </div>
       <ul>
-        <li>
-          <a onClick={() => console.log("clicked")}>
-            {/* <FontAwesomeIcon icon={solid('house')} /> */}
-            {/* <p>Dashboard</p> */}
-            {/* {isCollapsed?'true':'false'} */}
-          </a>
-        </li>
+        {navigation.map((item) => (
+          <ListItem
+            href={item.href}
+            isCollapsed={isCollapsed}
+            icon={item.icon}
+            title={item.title}
+          />
+        ))}
       </ul>
     </aside>
   );
