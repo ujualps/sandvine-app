@@ -13,14 +13,19 @@ type PropType = {
   icon: IconName;
   title: string;
   isCollapsed: boolean;
+  isActive: boolean;
 };
 
-const ListItem = ({ href, icon, title, isCollapsed }: PropType) => {
+const ListItem = ({ href, icon, title, isCollapsed, isActive }: PropType) => {
   return (
-    <li className="list-item" data-iscollapsed={isCollapsed}>
-      <Link to={href}>
+    <li
+      className="list-item"
+      data-iscollapsed={isCollapsed}
+      data-isactive={isActive}
+    >
+      <Link to={href} data-isactive={isActive} data-iscollapsed={isCollapsed}>
         <div>
-          <IconButton icon={icon} />
+          <IconButton isActive={isActive} icon={icon} />
         </div>
         {<span className="title">{title}</span>}
       </Link>

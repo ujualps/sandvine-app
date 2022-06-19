@@ -14,7 +14,7 @@ type PropType = {
 
 const IconButton = ({ icon, isActive = false, onClick }: PropType) => {
   return (
-    <button onClick={onClick} className="icon-wrapper" data-isActive={isActive}>
+    <button onClick={onClick} id="icon-wrapper" data-isActive={isActive}>
       <FontAwesomeIcon icon={icon} />
     </button>
   );

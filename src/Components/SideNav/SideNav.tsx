@@ -1,23 +1,19 @@
-import React, { useState, useCallback } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  solid,
-  regular,
-  brands,
-} from "@fortawesome/fontawesome-svg-core/import.macro";
+import React, { useState, useCallback, useEffect } from "react";
+import { useCurrentNavTab } from "hooks/useCurrentNavTab";
 import { IconButton } from "Components/IconButton";
 import "./SideNav.scss";
-import {
-  IconDefinition,
-  IconName,
-} from "@fortawesome/fontawesome-common-types";
-import { sideNavIcons, navigation } from "./utils";
+import { sideNavIcons } from "./utils";
+import { navigation } from "config/navigation";
 import { APP_NAME } from "interface/translate.const";
 import { ListItem } from "./Components/ListItem";
 
 //https://dribbble.com/shots/16252715-Sidebar-navigation
 const SideNav = () => {
   const [isCollapsed, setCollapsed] = useState(true);
+  // const [activeTab, setActiveTab] = useState(null);
+
+  const activeTab = useCurrentNavTab();
+  // console.log(activeTab);
 
   const toggleCollapsed = useCallback(() => {
     setCollapsed((state) => !state);
@@ -35,6 +31,8 @@ const SideNav = () => {
       <ul>
         {navigation.map((item) => (
           <ListItem
+            isActive={item.key === activeTab?.key}
+            key={item.key}
             href={item.href}
             isCollapsed={isCollapsed}
             icon={item.icon}

@@ -14,14 +14,30 @@
   width: 100%;
   font-size: 14px;
   &[data-iscollapsed="false"] {
+    &[data-isactive="true"] {
+      // background-color: $primary-color;
+      // color: white;
+      border-right: 3px solid $primary-color;
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+  }
+  &[data-iscollapsed="false"] {
     .title {
       opacity: 1;
-      transition-delay: 0.3s;
-      animation-delay: 0.3s;
+      transition-delay: 0.1s;
+      animation-delay: 0.1s;
       animation-name: title-keyframe;
       animation-duration: 0.3s;
       width: auto;
       margin-left: 0.5rem;
+    }
+    a [data-isactive="true"] {
+      // background-color: $primary-color;
+      // color: white;
+      border-right: 5px solid $primary-color;
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
     }
   }
   &[data-iscollapsed="true"] {
@@ -39,10 +55,20 @@
     text-decoration: none;
     color: $primary-color;
     border-radius: 6px;
-    transition: 0.2s;
+    // transition: 0.2s;
     // background-color: aliceblue;
     &:hover {
       background-color: #ddf2ef;
     }
+
+    // &[data-iscollapsed="false"] {
+    //   &[data-isactive="true"] {
+    //     // background-color: $primary-color;
+    //     // color: white;
+    //     border-right: 3px solid $primary-color;
+    //     border-top-right-radius: 0;
+    //     border-bottom-right-radius: 0;
+    //   }
+    // }
   }
 }
