@@ -5,7 +5,8 @@ import {
   IconName,
 } from "@fortawesome/fontawesome-common-types";
 import { Link } from "react-router-dom";
-import React from "react";
+import React, { useContext } from "react";
+import { SideNavContext } from "context/SideNavContext";
 import "./ListItem.scss";
 
 type PropType = {
@@ -14,9 +15,20 @@ type PropType = {
   title: string;
   isCollapsed: boolean;
   isActive: boolean;
+  id: number;
+  desc: string;
 };
 
-const ListItem = ({ href, icon, title, isCollapsed, isActive }: PropType) => {
+const ListItem = ({
+  href,
+  icon,
+  title,
+  isCollapsed,
+  isActive,
+  id,
+  desc,
+}: PropType) => {
+  const { setActiveInfo, activeInfo } = useContext(SideNavContext);
   return (
     <li
       className="list-item"
@@ -27,8 +39,17 @@ const ListItem = ({ href, icon, title, isCollapsed, isActive }: PropType) => {
         <div>
           <IconButton isActive={isActive} icon={icon} />
         </div>
-        {<span className="title">{title}</span>}
+        <span className="title">{title}</span>
+
+        <div className="info-icon title">
+          <IconButton
+            onMouseEnter={() => setActiveInfo(id)}
+            size={"small"}
+            icon={solid("info-circle")}
+          />
+        </div>
       </Link>
+      {activeInfo == id && desc && <div className="description">{desc}</div>}
     </li>
   );
 };

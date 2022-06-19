@@ -10,11 +10,24 @@ type PropType = {
   icon: IconDefinition;
   isActive: boolean;
   onClick: () => void;
+  size: "small" | "large";
 };
 
-const IconButton = ({ icon, isActive = false, onClick }: PropType) => {
+const IconButton = ({
+  icon,
+  isActive = false,
+  onClick,
+  size = "large",
+  ...args
+}: PropType) => {
   return (
-    <button onClick={onClick} id="icon-wrapper" data-isActive={isActive}>
+    <button
+      onClick={onClick}
+      id="icon-wrapper"
+      data-size={size}
+      data-isactive={isActive}
+      {...args}
+    >
       <FontAwesomeIcon icon={icon} />
     </button>
   );

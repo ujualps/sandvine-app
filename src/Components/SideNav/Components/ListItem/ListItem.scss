@@ -22,6 +22,12 @@
       border-bottom-right-radius: 0;
     }
   }
+  //   .info-icon {
+  //     opacity: 0;
+  //     transition: 0.4s;
+
+  //   }
+
   &[data-iscollapsed="false"] {
     .title {
       opacity: 1;
@@ -39,14 +45,43 @@
       border-top-right-radius: 0;
       border-bottom-right-radius: 0;
     }
+    .info-icon {
+      //   opacity: 1;
+      position: absolute;
+      right: 10px;
+    }
+    .description {
+      height: auto;
+      opacity: 1;
+      background-color: #e4f2ed;
+      padding: 0.5rem;
+      margin-block: 0.5rem;
+      margin-inline-end: 0.25rem;
+      border-radius: 4px;
+      font-size: 10px;
+      transition: 0.4s;
+      transition-delay: 0.5s;
+    }
   }
   &[data-iscollapsed="true"] {
     .title {
       opacity: 0;
       width: 0;
     }
+    .description {
+      height: 0 !important;
+      opacity: 0;
+      font-size: 1px;
+      transition: 0.4s;
+    //   padding: 0px;
+    //   margin: 0;
+    //   transition-delay: 0.5s;
+
+      //   background-color: aquamarine;
+    }
   }
   a {
+    position: relative;
     display: flex;
     // padding-block: .5rem;
     align-items: center;

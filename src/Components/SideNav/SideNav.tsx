@@ -31,12 +31,14 @@ const SideNav = () => {
       <ul>
         {navigation.map((item) => (
           <ListItem
+            id={item.key}
             isActive={item.key === activeTab?.key}
             key={item.key}
             href={item.href}
             isCollapsed={isCollapsed}
             icon={item.icon}
             title={item.title}
+            desc={item.desc}
           />
         ))}
       </ul>

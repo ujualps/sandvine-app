@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import { Header } from "./Components/Header";
 import { SideNav } from "./Components/SideNav";
+import { AnalyticsPage } from "Container/AnalyticsPage";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+import { SideNavContext } from "context/SideNavContext";
+import { SideNavContextProvider } from "context/SideNavContext";
 import "./App.scss";
+import { useCurrentNavTab } from "hooks/useCurrentNavTab";
 
 const Routes = () => {
   return (
@@ -14,7 +18,7 @@ const Routes = () => {
         <div>Profile</div>
       </Route>
       <Route exact path="/analytics">
-        <div>Analytics</div>
+        <AnalyticsPage />
       </Route>
       <Route>
         <Redirect to="/home" />
@@ -23,17 +27,32 @@ const Routes = () => {
   );
 };
 
-function App() {
+const Render = () => {
+  const { setActiveInfo, activeInfo } = useContext(SideNavContext);
+  const activeTab = useCurrentNavTab();
+
+  useEffect(() => {
+    setActiveInfo(activeTab?.key);
+  }, []);
+
   return (
     <div className="app">
-      <BrowserRouter basename="sandvine">
-        <Header />
-        <div className="app-main-wrapper">
-          <SideNav />
-          <Routes />
-        </div>
-      </BrowserRouter>
+      <Header />
+      <div className="app-main-wrapper">
+        <SideNav />
+        <Routes />
+      </div>
     </div>
+  );
+};
+
+function App() {
+  return (
+    <BrowserRouter basename="sandvine">
+      <SideNavContextProvider>
+        <Render />
+      </SideNavContextProvider>
+    </BrowserRouter>
   );
 }
 
