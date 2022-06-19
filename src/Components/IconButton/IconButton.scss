@@ -11,14 +11,17 @@
   transition: 0.2s;
   border-radius: 6px;
   cursor: pointer;
+
   &:hover {
     background-color: #ddf2ef;
   }
+
   &[data-size="large"] {
     height: 36px;
     width: 36px;
     font-size: 16px;
   }
+  
   &[data-size="small"] {
     height: 24px;
     width: 24px;
@@ -34,8 +37,3 @@
     color: white;
   }
 }
-
-// .icon-wrapper[data-isActive="true"] {
-//   background-color: $primary-color;
-//   color: white;
-// }

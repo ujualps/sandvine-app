@@ -7,15 +7,30 @@ import { SideNavContext } from "context/SideNavContext";
 import { SideNavContextProvider } from "context/SideNavContext";
 import "./App.scss";
 import { useCurrentNavTab } from "hooks/useCurrentNavTab";
+import { navigation } from "config/navigation";
 
 const Routes = () => {
+  const { setActiveInfo, activeInfo } = useContext(SideNavContext);
+  const activeTab = useCurrentNavTab();
+
+  useEffect(() => {
+    setActiveInfo(activeTab?.key);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const activeInfoDesc = navigation.find((i) => i.key === activeInfo)?.desc;
+
   return (
     <Switch>
       <Route exact path="/home">
-        <div>Home</div>
+        <div>
+          Home<p>Active Accordian is : {activeInfoDesc}</p>
+        </div>
       </Route>
       <Route exact path="/profile">
-        <div>Profile</div>
+        <div>
+          Profile<p>Active Accordian is : {activeInfoDesc}</p>
+        </div>
       </Route>
       <Route exact path="/analytics">
         <AnalyticsPage />
@@ -27,30 +42,17 @@ const Routes = () => {
   );
 };
 
-const Render = () => {
-  const { setActiveInfo, activeInfo } = useContext(SideNavContext);
-  const activeTab = useCurrentNavTab();
-
-  useEffect(() => {
-    setActiveInfo(activeTab?.key);
-  }, []);
-
-  return (
-    <div className="app">
-      <Header />
-      <div className="app-main-wrapper">
-        <SideNav />
-        <Routes />
-      </div>
-    </div>
-  );
-};
-
 function App() {
   return (
     <BrowserRouter basename="sandvine">
       <SideNavContextProvider>
-        <Render />
+        <div className="app">
+          <Header />
+          <div className="app-main-wrapper">
+            <SideNav />
+            <Routes />
+          </div>
+        </div>
       </SideNavContextProvider>
     </BrowserRouter>
   );
