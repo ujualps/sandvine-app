@@ -23,12 +23,12 @@ const Routes = () => {
   return (
     <Switch>
       <Route exact path="/home">
-        <div>
+        <div style={{padding: '1rem'}}>
           Home<p>Active Accordian is : {activeInfoDesc}</p>
         </div>
       </Route>
       <Route exact path="/profile">
-        <div>
+        <div style={{padding: '1rem'}}>
           Profile<p>Active Accordian is : {activeInfoDesc}</p>
         </div>
       </Route>

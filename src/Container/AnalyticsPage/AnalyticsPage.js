@@ -3,7 +3,7 @@ import { Graph } from './Components/Graph'
 
 const AnalyticsPage = () => {
     return (
-        <div>
+        <div style={{padding: '1rem'}}>
             <span>
                 Analytics Page
             </span>
