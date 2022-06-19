@@ -1,0 +1,39 @@
+@import "../../constants.scss";
+
+.header-wrapper {
+  width: 100%;
+  height: $header-height;
+  background-color: $primary-color;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  box-shadow: 0px 3px 10px -2px rgba(0,0,0,0.25);
+
+  &-logo {
+    display: flex;
+    align-items: center;
+    margin-inline: 1rem;
+    &-title {
+      display: flex;
+      flex-direction: column;
+      span {
+        color: white;
+        font-size: 20px;
+        font-weight: 500;
+        &:not(:first-child) {
+          font-size: 7px;
+        }
+      }
+    }
+    img {
+      height: 2.5rem;
+      margin-right: 0.5rem;
+    }
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .header-wrapper {
+    justify-content: center;
+  }
+}

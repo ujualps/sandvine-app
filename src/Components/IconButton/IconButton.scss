@@ -1,0 +1,39 @@
+@import "../../constants.scss";
+
+#icon-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: none;
+  border: none;
+  color: $primary-color;
+
+  transition: 0.2s;
+  border-radius: 6px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #ddf2ef;
+  }
+
+  &[data-size="large"] {
+    height: 36px;
+    width: 36px;
+    font-size: 16px;
+  }
+  
+  &[data-size="small"] {
+    height: 24px;
+    width: 24px;
+    font-size: 12px;
+    &:hover {
+      background-color: #c7dfdb;
+      border-radius: 50%;
+    }
+  }
+
+  &[data-isactive="true"] {
+    background-color: $primary-color;
+    color: white;
+  }
+}
